@@ -1,0 +1,29 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="451" height="288" viewBox="0 0 451 288">
+  <defs>
+    <linearGradient id="top" x1="0" y1="0" x2="0.8" y2="1"><stop stop-color="#eee9fa"/><stop offset="1" stop-color="#d9d0ef"/></linearGradient>
+    <linearGradient id="front" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#c7b9e2"/><stop offset="1" stop-color="#ae9bcf"/></linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#a991d0"/><stop offset="1" stop-color="#8468b7"/></linearGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f4fc"/><stop offset="1" stop-color="#e5def3"/></linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="150%"><feGaussianBlur stdDeviation="5"/></filter>
+  </defs>
+  <rect width="451" height="288" fill="#f8f6ff"/>
+  <ellipse cx="267" cy="257" rx="173" ry="21" fill="#8f79bb" opacity=".14" filter="url(#soft)"/>
+  <!-- rear cube -->
+  <path d="M126 53 328 39 343 47 343 172 197 218 190 208 190 69Z" fill="url(#side)" opacity=".86"/>
+  <path d="M126 53 190 69 190 208 126 188Z" fill="url(#light)"/>
+  <path d="M126 53 326 40 343 49 190 69Z" fill="url(#top)"/>
+  <path d="M190 69 343 49 343 171 190 208Z" fill="url(#front)"/>
+  <path d="M190 69 343 49" stroke="#c9b9e4" stroke-width="2"/>
+  <!-- front left cube -->
+  <path d="M31 219 135 239 266 218 266 288 31 288Z" fill="url(#front)"/>
+  <path d="M31 219 135 239 135 288 31 288Z" fill="url(#light)"/>
+  <path d="M135 239 266 218 266 288 135 288Z" fill="url(#side)"/>
+  <path d="M31 219 135 239 266 218 161 199Z" fill="#fbfaff"/>
+  <!-- front right cube -->
+  <path d="M258 163 338 142 451 164 451 288 283 288 263 269Z" fill="url(#front)"/>
+  <path d="M258 163 284 181 284 288 264 269Z" fill="url(#light)"/>
+  <path d="M284 181 451 164 451 288 284 288Z" fill="url(#front)"/>
+  <path d="M258 163 338 142 451 164 369 186Z" fill="url(#top)"/>
+  <path d="M258 163 284 181 369 186 451 164" fill="#fff" opacity=".92"/>
+</svg>
+
