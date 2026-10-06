@@ -18,7 +18,7 @@ export default function HeroSection() {
   return <section id="top" className="relative isolate overflow-hidden">
     <div className="absolute right-0 top-0 -z-10 h-[340px] w-full bg-cover bg-center md:h-[306px] md:w-[61%]" style={{backgroundImage:"url('/back.png')"}}/>
     <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white via-white/95 to-white/5 md:hidden"/><div className="absolute left-[39%] top-0 -z-10 hidden h-[306px] w-[25%] bg-gradient-to-r from-white via-white/70 to-transparent md:block"/><div className="absolute inset-x-0 top-[296px] -z-10 h-11 bg-gradient-to-t from-white to-transparent md:top-[274px] md:h-8"/>
-    <div className="mx-auto max-w-[1440px] px-5 pb-1 pt-10 sm:px-11 sm:pt-10">
+    <div className="mx-auto max-w-[1440px] px-5 pb-1 pt-10 sm:px-8 sm:pt-10">
       <div className="max-w-[620px]"><div className="min-h-[304px] md:min-h-[268px]"><div key={messageIndex} className="hero-copy"><div className="mb-5 inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-2.5 py-1 text-[10px] font-bold text-brand"><Target size={11}/> {message.audience}</div>
         <h1 className="max-w-[380px] text-[30px] font-extrabold leading-[.96] tracking-[-1.1px] text-slate-950"><span>{message.lead}</span>{' '}<span className="text-brand">{message.highlight}</span>{message.ending && <> <span>{message.ending}</span></>}</h1>
         <p className="mt-3 max-w-[360px] text-[11px] leading-4 text-slate-500 lg:text-xs">{message.description}</p></div>
