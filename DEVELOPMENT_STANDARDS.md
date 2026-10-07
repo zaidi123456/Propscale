@@ -4,42 +4,57 @@ This document describes the current frontend and sets conventions for future wor
 
 ## 1. Project overview
 
-- **Framework:** Next.js 14, using the App Router (`app/`).
+- **Framework:** Next.js 14, using the App Router (`src/app/`).
 - **UI runtime:** React 18 with JSX.
 - **Language:** JavaScript with JSX; this repository is not currently configured for TypeScript.
-- **Styling:** Tailwind CSS 3, PostCSS, and a small set of global CSS rules in `app/globals.css`.
+- **Styling:** Tailwind CSS 3, PostCSS, and a small set of global CSS rules in `src/app/globals.css`.
 - **Icons:** `lucide-react`. Use the shared icon package instead of introducing a second icon library for ordinary interface icons.
+- **Additional UI/data libraries:** The proposed product stack includes shadcn/ui or Headless UI with CVA, TanStack Table, React Hook Form with Zod, and TanStack Query or Zustand. These are not installed yet because the current product surface is a static landing page. Add them with the feature that needs them; do not include unused dependencies in the landing-page bundle.
 - **Package manager:** npm; `package-lock.json` is committed and should stay in sync with `package.json`.
 - **Deployment configuration:** Next.js defaults in `next.config.mjs`; no custom Next configuration is currently defined.
-- **Current product surface:** one landing page composed in `app/page.jsx` from reusable section components.
+- **Current product surface:** one landing page composed in `src/app/page.jsx` from reusable section components.
 
 ## 2. Repository structure
 
 ```text
-app/
-  globals.css          Tailwind layers, global element styles, shared animations, mock UI styles
-  layout.jsx           Root document, global stylesheet import, page metadata
-  page.jsx             Landing page composition and section order
-components/
-  Navbar.jsx           Main site navigation
-  HeroSection.jsx      Hero content, rotating audience messages, search form
-  CategoryCards.jsx    Rotating category card sets
-  MicroMarketsSection.jsx  Featured micro-market cards
-  MarketsSection.jsx  Market cards
-  FeatureBanners.jsx  Feature callouts and supporting illustrations
-  PlatformPreview.jsx Platform preview cards and CSS-built dashboard mockups
+src/
+  app/                 Next.js App Router pages and layouts
+    page.jsx           Landing page composition and section order
+    layout.jsx         Root document and page metadata
+    globals.css        Tailwind layers, global styles, and animations
+    (auth)/            Reserved for authentication routes
+    (dashboard)/       Reserved for the authenticated app shell and routes
+      overview/        Reserved for dashboard summary and metrics
+      data-grid/       Reserved for tabular management views
+    api/               Reserved for Next.js API route handlers
+  components/
+    ui/                Reserved for shared atomic UI
+    layout/Navbar.jsx  Main site navigation
+    features/          Landing page sections
+      HeroSection.jsx
+      CategoryCards.jsx
+      MicroMarketsSection.jsx
+      MarketsSection.jsx
+      FeatureBanners.jsx
+      PlatformPreview.jsx
+  config/              Reserved for app configuration
+  hooks/               Reserved for shared React hooks
+  lib/                 Reserved for shared utilities and data helpers
+  services/            Reserved for API clients
+public/                Browser-served assets
 public/
   back.png             Hero background image
-  unlock-blocks.svg    Decorative blocks illustration
+  image 1.png         Source for the blocks illustration used in the “Unlock deeper intelligence” banner
   Untitled.png         Dotted map illustration used in “How PropSense works”
 ```
 
-Keep route-level files in `app/` and reusable page sections in `components/`. Put static, browser-served assets in `public/` and reference them from the site root, such as `/back.png`. Keep a component focused on one section or cohesive UI responsibility. Move repeated, independently useful UI into a shared component when a second use appears; avoid creating abstractions for one-off markup without a clear reuse or readability benefit.
+Keep route-level files in `src/app/`, shared atomic UI in `src/components/ui/`, layout elements in `src/components/layout/`, and domain-specific sections in `src/components/features/`. Put configuration, hooks, shared utilities, and API clients in their corresponding `src/` directories when needed. These folders are created as features are introduced; avoid empty placeholder modules. Put static, browser-served assets in `public/` and reference them from the site root, such as `/back.png`. Keep a component focused on one section or cohesive UI responsibility. Move repeated, independently useful UI into a shared component when a second use appears; avoid creating abstractions for one-off markup without a clear reuse or readability benefit.
 
 ## 3. Component and rendering conventions
 
 - Use a default export for a component file’s primary component, matching the existing section components.
-- Keep page assembly and section order in `app/page.jsx`; avoid placing whole-page composition inside a section component.
+- Keep shared atomic primitives such as `Button`, `Input`, and `Card` in `src/components/ui/`. Define their visual styles with named variants and use those primitives in feature components instead of duplicating base styles.
+- Keep page assembly and section order in `src/app/page.jsx`; avoid placing whole-page composition inside a section component.
 - Keep content/data arrays near the component that consumes them when they are specific to that section. Extract shared content only when multiple components need it.
 - Components are React Server Components by default. Add `'use client';` only when a component needs browser APIs, state, effects, event-driven interaction, or another client-only dependency. Currently `HeroSection.jsx` and `CategoryCards.jsx` use client rendering for timed message/card rotation.
 - Keep timers and subscriptions inside effects and always clean them up. Respect `prefers-reduced-motion` for non-essential animation, as the current rotating sections do.
@@ -50,7 +65,7 @@ Keep route-level files in `app/` and reusable page sections in `components/`. Pu
 ## 4. Styling and responsive layout
 
 - Use Tailwind utility classes for component layout, spacing, typography, colors, borders, and responsive changes.
-- Use `app/globals.css` for global resets, shared keyframes, shared utility classes, and complex mock dashboard styling that would be unwieldy as JSX class strings. Give custom classes descriptive, component-related names.
+- Use `src/app/globals.css` for global resets, shared keyframes, shared utility classes, and complex mock dashboard styling that would be unwieldy as JSX class strings. Give custom classes descriptive, component-related names.
 - Keep component-specific styles close to the component when practical. If adding a global class, document its purpose and avoid generic names that could collide.
 - Follow mobile-first Tailwind breakpoints. Add `sm:`, `md:`, `lg:`, and larger overrides only when the layout actually changes at that width. Check narrow screens for overflow and preserve usable tap targets.
 - Prefer existing spacing and color tokens before adding arbitrary values. Arbitrary values are already used to reproduce specific design references; use them intentionally and consolidate repeated values into tokens when they become a stable system.
@@ -61,7 +76,7 @@ Keep route-level files in `app/` and reusable page sections in `components/`. Pu
 
 ### Current font
 
-The global stack in `app/globals.css` is **Arial, Helvetica, sans-serif**, with antialiasing enabled. No custom font is currently loaded. Preserve this stack unless a product-wide font change is intentional; if changed, load it centrally in `app/layout.jsx` (or the approved font-loading mechanism) rather than loading separate fonts in individual components.
+The app loads **Inter** centrally with `next/font/google` in `src/app/layout.jsx`, and applies antialiasing in `src/app/globals.css`. Keep the font global rather than loading separate fonts in individual components.
 
 ### Existing size scale and usage
 
@@ -80,12 +95,11 @@ Use a consistent hierarchy in new user-facing sections: one primary heading, cle
 
 ## 6. Color and visual tokens
 
-### Defined tokens
+### Shared tokens
 
-- **Brand violet:** `#704cf6`, configured as `brand` in `tailwind.config.js`. Use `text-brand`, `bg-brand`, `border-brand`, etc. for primary actions, emphasized text, and selected states.
-- **Soft shadow:** `0 8px 28px rgba(39, 29, 87, .07)`, configured as `shadow-soft` in `tailwind.config.js`. Use sparingly for elevation and hover states.
-- **Global text/background:** body text `#171923`, white page background; light color scheme.
-- **Selection:** pale violet `#e8e1ff` with dark violet `#5033d8` text.
+The source of truth for reusable visual values is the custom properties in `src/app/globals.css` under `:root`. `tailwind.config.js` maps Tailwind theme names to these variables. Use Tailwind utilities in JSX (for example, `text-brand`, `bg-surface`, `rounded-card`, or `text-section-title`) and CSS variables in global styles. Do not define a second independent value for an existing token.
+
+The shared set includes semantic colors, page/section/card spacing, compact and display typography, line heights, letter spacing, border widths, and common radii. The soft shadow remains configured as `shadow-soft` in Tailwind. Add a token when a design value is used across components or should be consistent throughout the app; keep genuinely one-off illustration and mock screenshot details local.
 
 ### Existing usage pattern
 
@@ -96,7 +110,7 @@ Use a consistent hierarchy in new user-facing sections: one primary heading, cle
 - Category card accents: violet, orange, emerald, rose, and blue; each card combines a pale background, a matching border, and a stronger icon/accent color.
 - Positive market signals: emerald; caution/medium states: amber. Do not communicate status through color alone; include text or another visual cue.
 
-Use the configured `brand` token instead of repeating the brand hex value. If recurring colors or semantic statuses emerge, define named Tailwind theme tokens rather than scattering new one-off hex colors through components. Arbitrary hex values are currently used for a few section backgrounds and mockup details; keep those local unless they become shared design tokens.
+Use configured semantic tokens instead of repeating their values. The default Tailwind palette remains available for conventional colors and statuses; if a project color becomes recurring, add it to the shared token set and map it in Tailwind.
 
 ## 7. Motion and interaction
 
@@ -108,7 +122,7 @@ Use the configured `brand` token instead of repeating the brand hex value. If re
 
 ## 8. Assets and images
 
-- Store project-owned image and vector assets under `public/` and use root-relative paths such as `/unlock-blocks.svg`.
+- Store project-owned image and vector assets under `public/` and reference them with root-relative paths such as `/image%201.png`.
 - Use descriptive filenames for new assets. Existing names such as `Untitled.png` should be renamed only when updating every reference and there is a clear reason to do so.
 - Provide descriptive alt text for informative images. For decorative art, use `alt=""` and `aria-hidden="true"`.
 - Use optimized, appropriately sized source assets. For remote images, configure the framework’s image handling if adopting `next/image`; do not add remote image hosts to Next config unless that feature is actually being used and the host is known.

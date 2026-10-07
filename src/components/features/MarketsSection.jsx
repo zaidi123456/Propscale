@@ -1,0 +1,11 @@
+import { ArrowRight, Building2, MapPin } from 'lucide-react';
+import Card from '../ui/Card';
+
+const markets=[
+ {name:'London',region:'Greater London',count:'4,993',areas:'33',image:'photo-1513635269975-59663e0ac1ad'},
+ {name:'Liverpool',region:'Liverpool City Region',count:'1,003',areas:'6',image:'photo-1519501025264-65ba15a82390'},
+ {name:'Leeds',region:'West Yorkshire',count:'1,404',areas:'5',image:'photo-1486406146926-c627a92ad1ab'},
+ {name:'Manchester',region:'Greater Manchester',count:'1,702',areas:'10',image:'photo-1480714378408-67cf0d13bc1b'},
+ {name:'Newcastle',region:'North East',count:'1,257',areas:'7',image:'photo-1518005020951-eccb494ad742'}
+];
+export default function MarketsSection(){return <section id="markets" className="mx-auto w-full max-w-[1440px] px-page-gutter py-section-y sm:px-8"><div className="mb-5 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between"><h2 className="text-xl font-extrabold tracking-tight">Explore by Market</h2><a href="#markets" className="inline-flex items-center gap-1 text-sm font-bold text-brand">View all markets <ArrowRight size={14}/></a></div><div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">{markets.map(m=><Card key={m.name} href="#micro-markets" variant="market"><div className="h-20 overflow-hidden"><img src={`https://images.unsplash.com/${m.image}?auto=format&fit=crop&w=700&q=80`} alt={`${m.name} city skyline`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105"/></div><div className="p-card-padding"><h3 className="text-sm font-extrabold">{m.name}</h3><p className="text-compact text-slate-400">{m.region}</p><div className="mt-2 space-y-1 text-compact text-slate-500"><p className="flex items-center gap-1"><MapPin size={12} className="text-brand"/>{m.count} micro-markets</p><p className="flex items-center gap-1"><Building2 size={12} className="text-brand"/>{m.areas} local areas</p></div><span className="mt-3 inline-flex items-center gap-1 text-compact font-bold text-brand">Explore market <ArrowRight size={12}/></span></div></Card>)}</div></section>}
