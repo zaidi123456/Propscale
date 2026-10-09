@@ -171,3 +171,24 @@ Before considering a frontend change complete:
 5. Confirm all asset paths and links point to valid destinations; keep sample data clearly identifiable.
 6. Run the relevant project command when verification is requested or needed for the change, and report what was run. Update this guide if the change establishes or alters a project-wide standard.
 
+## 13. Current landing-page presentation
+
+### Synchronized hero and market-card rotation
+
+- `MarketRotationProvider` in `src/components/features/MarketRotationContext.jsx` owns the active landing-page message index. Keep the hero copy and the micro-market heading/card set driven by this shared state so their transitions stay in sync.
+- The current three hero messages correspond to sourcing opportunities, emerging micro-markets, and development areas. Keep the message and market-set order aligned when adding or revising a rotation item.
+- The rotation advances every 6.5 seconds. Its timer is created and cleaned up in an effect; when `prefers-reduced-motion: reduce` is active, it does not auto-advance.
+- The market-card grid remounts on a rotation change to replay its staggered entrance. The entrance lasts 0.55 seconds per card with a 0.1-second delay between cards; disable this animation for reduced-motion users.
+- Preserve useful content if rotation is paused or disabled: the initial hero message and its matching market cards remain rendered.
+
+### Market-card content and assets
+
+- Keep each audience-specific card set in `src/components/features/MicroMarketsSection.jsx`. The sourcing, emerging-market, and development sets are presentation examples, not live or verified investment recommendations; do not present their scores, growth figures, or liquidity labels as real-time data.
+- Keep card order, heading, and details aligned with the active hero message. Use stable market names as React keys and meaningful image alt text.
+- Project-owned market imagery belongs in `public/` and is referenced with a root-relative URL. The supplied Stockport image is stored as `public/stockport-sk1.png`; other market photos currently use Unsplash URLs.
+
+### Feature banners and platform section styling
+
+- `FeatureBanners` contains the “Unlock deeper intelligence” and “How PropSense works” cards. At desktop widths, their target dimensions are 731.39 × 301.75px and 562.61 × 303px respectively; use a centered two-column layout that preserves those dimensions where space permits, and stack/fill the available width on smaller screens.
+- Keep banner illustrations decorative when appropriate (`alt=""` and `aria-hidden="true"`). The blocks illustration is sized responsively in `globals.css`; the UK map has a 164 × 245px desktop size with smaller viewport overrides.
+- The final `#platform` section uses `#FAF8FF` as its background and `#EEE9FA` for its top border. Keep this section-level treatment separate from the individual preview-card surfaces.

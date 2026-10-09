@@ -25,7 +25,8 @@ export default function Button({
   ...props
 }) {
   const Component = href ? 'a' : 'button';
-  const classes = `inline-flex shrink-0 items-center justify-center gap-1.5 rounded-control font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`;
+  const shape = variant === 'chip' ? 'rounded-full' : 'rounded-[10px]';
+  const classes = `inline-flex shrink-0 items-center justify-center gap-1.5 ${shape} font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`;
 
   return <Component href={href} type={href ? undefined : type} className={classes} {...props}>{children}</Component>;
 }

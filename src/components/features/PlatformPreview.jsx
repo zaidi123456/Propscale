@@ -36,8 +36,40 @@ function CompareMock() {
 }
 
 function DashboardMock({ variant }) {
-  if (variant === 1) return <div className="mock-dash compare-mock"><div className="mock-top"><b><i/> PROPSCALE</b><span>Home　 Explore　 Map　 Compare　 Watchlist</span><span className="mock-avatar"/></div><div className="mock-body"><aside>WORKSPACE<br/><br/>Dashboard<br/><br/>Plays<br/><br/>Portfolios<br/><br/>Watchlist<br/><br/>Alerts<br/><br/>EXPLORE<br/><br/>Search &amp; Explore<br/><br/>Top Views<br/><br/>Market Map<br/><br/>Compare</aside><main className="compare-main"><CompareMock/></main></div></div>;
-  if (variant === 2) return <div className="mock-dash play-preview"><div className="mock-top"><b><i/> PROPSCALE</b><span>Home  Explore  Map  Compare  Watchlist</span><span className="mock-avatar"/></div><div className="mock-body"><aside><b>WORKSPACE</b><br/>&#9679; Dashboard<br/>&#9679; Plays<br/>&#9679; Portfolios<br/>&#9679; Watchlist<br/>&#9679; Alerts<br/><br/><b>EXPLORE</b><br/>&#9679; Search &amp; Explore<br/>^ Top Views<br/>&#9679; Market Map<br/>&#9679; Compare<br/><br/><b>INTELLIGENCE</b><br/>&#9679; Area Intelligence<br/>&#9679; Property Intelligence<br/>&#9679; Market Signals<br/>&#9679; Reports<br/><br/><b>ACCOUNT</b><br/>&#9679; Settings<br/>&#9679; Billing<br/>&#9679; Help Centre</aside><main className="play-main"><div className="play-back">&lt; &nbsp; Back to Plays</div><div className="play-heading"><div><small>Growth</small><h4>Northern Growth Play</h4><p>High-growth emerging markets across the North West and Yorkshire</p></div><div className="thesis"><b>&#9679; &nbsp;Play Thesis</b><span>This play tracks northern areas with improving growth outlook, focusing on affordability and strengthening liquidity signals.</span><a>View full thesis &#9679;</a></div><span className="mock-control">&#9679; &nbsp; Compare</span><span className="mock-control purple-btn">&#9679; &nbsp; Edit Play</span></div><div className="play-metrics"><div><b>&#9679;</b><span>Areas in Play<strong>4</strong></span></div><div><b>&#9679;</b><span>Avg Opportunity Score<strong>80</strong></span></div><div><b>&#9679;</b><span>Signals Improving<strong>3</strong></span></div><div><b>&#9679;</b><span>New Opportunities<strong>2</strong></span></div><div><b>&#9679;</b><span>Confidence<strong className="high">High</strong></span></div></div><div className="play-chart"><div className="play-chart-head"><div><b>Play Signal Trend</b><span>Average opportunity score across areas in this play</span></div><label>&#9679; +7.3% since tracking began &nbsp; <em>1M&#9679;</em></label></div><div className="chart-area"><div className="y-labels"><span>105</span><span>100</span><span>95</span><span>90</span><span>85</span></div><svg viewBox="0 0 600 88" preserveAspectRatio="none"><path d="M0 70 C55 66 70 59 120 57 S180 51 240 50 S310 44 365 37 S430 32 480 22 S545 18 600 8" fill="none" stroke="#7958ff" strokeWidth="2.5"/></svg><div className="x-labels"><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span></div></div></div><div className="areas-head"><b>Areas in this play</b><a>View all areas &#9679;</a></div><div className="play-areas"><div><i className="area-watch"/><strong>Manchester</strong><small>North West</small></div><div><i className="area-building"/><strong>Leeds</strong><small>Yorkshire</small></div><div><i className="area-city"/><strong>Liverpool</strong><small>North West</small></div><div><i className="area-river"/><strong>Sheffield</strong><small>Yorkshire</small></div></div></main></div></div>;
+  if (variant === 0) {
+    return (
+      <div className="mock-dash">
+        <img
+          src="/intelligent-dashboard.png"
+          alt="Intelligent Dashboard preview"
+          className="h-full w-full object-cover object-top"
+        />
+      </div>
+    );
+  }
+  if (variant === 1) {
+    return (
+      <div className="mock-dash">
+        <img
+          src="/compare-benchmark.png"
+          alt="Compare & Benchmark preview"
+          className="h-full w-full object-cover"
+          style={{ objectPosition: '0 2%' }}
+        />
+      </div>
+    );
+  }
+  if (variant === 2) {
+    return (
+      <div className="mock-dash">
+        <img
+          src="/workflows-plays.png"
+          alt="Workflows & Plays preview"
+          className="h-full w-full object-cover object-top"
+        />
+      </div>
+    );
+  }
   const title = variant === 0 ? 'Cambridge Mill Road' : 'Northern Growth Play';
   return <div className="mock-dash"><div className="mock-top"><b><i/> PROPSCALE</b><span>Explore　 Map　 Compare　 Portfolio</span><span className="mock-avatar"/></div><div className="mock-body"><aside>Dashboard<br/><br/>Markets<br/><br/>Watchlists<br/><br/>Reports<br/><br/>Settings</aside><div className="mock-main"><div className="mock-title">{title}</div>
     {variant === 2 ? <><div className="workflow-row"><b>North Growth Play</b><span>Active</span><span>•••</span></div><div className="mock-chart wide"><div className="chart-label">Growth outlook · 12 month trend</div><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path d="M0 70 C50 67,60 62,100 58 S160 54,205 42 S260 45,300 28 S355 28,400 12" fill="none" stroke="#805eff" strokeWidth="3"/></svg></div><div className="photo-strips"><i/><i/><i/><i/></div></> : <><div className="dash-location">East of England · Cambridge · Area overview</div><div className="dash-tabs">Overview　 Growth　 Drivers　 Risks　 Timing　 Planning</div><div className="section-caption">1. EXECUTIVE SUMMARY</div><div className="executive-grid"><div className="score-tile"><small>OPPORTUNITY SCORE</small><strong>87</strong><em>Top 5% nationally</em></div><div className="executive-stat"><small>Projected appreciation</small><b>5.2% – 8.1% pa</b><em>Strong outlook</em><div className="tiny-line"/></div><div className="executive-stat"><small>Rental yield strength</small><b className="green-stat">High</b><em>Gross yield 6.2%</em><div className="tiny-bars"/></div><div className="executive-stat"><small>Entry timing</small><b>Favourable</b><em>Act now</em><div className="timing-line"/></div></div><div className="section-caption verdict-caption">2. INVESTMENT VERDICT &amp; EVIDENCE</div><div className="verdict-panel"><b>Investment Verdict: Strong Buy Signal</b><p>Salford Quays presents a compelling investment case underpinned by strong growth momentum, improving liquidity and a favourable entry point relative to comparable markets.</p></div></>}
@@ -45,8 +77,8 @@ function DashboardMock({ variant }) {
 }
 
 export default function PlatformPreview() {
-  return <section id="platform" className="relative isolate mt-1 w-full bg-transparent pt-6"><div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8">
-    <div className="mx-auto mb-4 max-w-xl text-center"><span className="rounded-full border border-violet-200 bg-white px-2.5 py-1 text-[8px] font-bold text-brand">Coming Q4 2026</span><h2 className="mt-3 text-section-title font-extrabold tracking-tight">Inside the full platform</h2><p className="mt-1.5 text-[8px] leading-[12px] text-slate-500">Discover, evaluate and act on opportunities in one integrated workflow.<br className="hidden sm:block"/> Everything you need, in context, so you can invest with confidence.</p></div>
-    <div className="grid gap-card-padding lg:grid-cols-3">{cards.map(({ tag, title, copy, link, variant }) => <Card as="article" key={title} variant="preview"><DashboardMock variant={variant}/><div className="p-2.5"><p className="text-[7px] font-extrabold tracking-wide text-brand">{tag}</p><h3 className="mt-0.5 text-compact font-extrabold">{title}</h3><p className="mt-1 text-[8px] leading-[12px] text-slate-500">{copy}</p><a href="#signup" className="mt-2 inline-flex items-center gap-1 text-[7px] font-bold text-brand">{link} <ArrowRight size={9}/></a></div></Card>)}</div>
-  </div><footer className="mx-auto mt-3 w-full max-w-[1440px] border-t border-violet-100 py-4 text-center text-[9px] text-slate-400">PropSense does not provide financial advice. Data last updated 24 May 2026.</footer></section>;
+  return <section id="platform" className="relative isolate min-h-[576px] w-full bg-[#faf8ff] pt-7"><div className="mx-auto w-full max-w-[1240px] px-4 sm:px-[30px]">
+    <div className="mx-auto mb-5 flex max-w-[600px] flex-col items-center gap-2 text-center"><span className="rounded-full border border-[#d8ccff] bg-white px-2 py-[3px] text-[8px] font-bold text-brand">Coming Q4 2026</span><h2 className="text-[28px] font-bold leading-[31px] text-[#17142c]">Inside the full platform</h2><p className="text-[10px] leading-[15px] text-[#737373]">Discover, evaluate and act on opportunities in one integrated workflow.<br className="hidden sm:block"/> Everything you need, in context, so you can invest with confidence.</p></div>
+    <div className="grid gap-4 lg:grid-cols-3">{cards.map(({ tag, title, copy, link, variant }) => <Card as="article" key={title} variant="preview"><DashboardMock variant={variant}/><div className="px-[14px] pb-[17px] pt-[13px]"><p className="text-[7px] font-extrabold tracking-[0.56px] text-brand">{tag}</p><h3 className="mt-0.5 text-[13px] leading-5 font-extrabold text-[#17142c]">{title}</h3><p className="mt-1 text-[8px] leading-[12px] text-slate-500">{copy}</p><a href="#signup" className="mt-2 inline-flex items-center gap-1 text-[7px] font-bold text-brand">{link} <ArrowRight size={9}/></a></div></Card>)}</div>
+  </div></section>;
 }

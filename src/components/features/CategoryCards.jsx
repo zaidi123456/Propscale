@@ -36,14 +36,13 @@ export default function CategoryCards() {
     return () => window.clearInterval(timer);
   }, []);
 
-  return <section id="explore" className="mx-auto w-full max-w-[1440px] px-page-gutter py-section-y sm:px-8">
-    <h2 className="mb-5 text-xl font-extrabold tracking-tight">Explore by what matters most</h2>
-    <div key={setIndex} className="grid grid-cols-1 gap-card-padding sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
+  return <section id="explore" className="mx-auto w-full max-w-[1440px] px-page-gutter pb-0 pt-[60px] sm:px-8 xl:px-[63px]">
+    <h2 className="mb-5 text-[19px] font-bold leading-7 text-[#171717]">Explore by what matters most</h2>
+    <div key={setIndex} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
       {categorySets[setIndex].map(({title,copy,icon:Icon,shade})=><Card as="a" href="#micro-markets" key={title} variant="category" className={`category-card ${shade}`}>
         <span className="mb-3 grid h-9 w-9 place-items-center rounded-full bg-white"><Icon size={18}/></span>
-        <span className="text-sm font-extrabold text-slate-800">{title}</span>
-        <span className="mt-1 flex-1 text-xs leading-4 text-slate-500">{copy}</span>
-        <ArrowUpRight className="ml-auto transition group-hover:translate-x-0.5" size={16}/>
+        <span className="text-[13.5px] font-bold leading-5 text-[#171717]">{title}</span>
+        <span className="mt-1 flex min-h-[33px] items-end gap-4 text-[12px] leading-4 text-slate-500"><span className="flex-1">{copy}</span><ArrowUpRight className="shrink-0 transition group-hover:translate-x-0.5" size={14}/></span>
       </Card>)}
     </div>
   </section>;
