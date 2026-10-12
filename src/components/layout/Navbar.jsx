@@ -1,9 +1,43 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Activity, ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 
 const links = ['Map', 'Reports', 'How It Works', 'Pricing'];
+const explorePages = [
+  { label: 'Emerging Investment Areas', href: '/emerging-investment-areas' },
+  { label: 'Best Growth Outlook', href: '/best-growth-outlook' },
+  { label: 'Strongest Rental Pressure', href: '/strongest-rental-pressure' },
+  { label: 'Strongest Relative Value', href: '/strongest-relative-value' },
+  { label: 'Liquidity Expansion', href: '/liquidity-expansion' },
+];
+
+function AuthActions({ onNavigate, className = '' }) {
+  return (
+    <div className={`relative h-[37px] w-[136px] shrink-0 ${className}`}>
+      <img
+        src="/auth-actions.svg"
+        alt=""
+        aria-hidden="true"
+        width="136"
+        height="37"
+        className="absolute inset-0"
+      />
+      <a
+        href="#login"
+        aria-label="Log in"
+        onClick={onNavigate}
+        className="absolute inset-y-0 left-0 w-[53px] rounded-l-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      />
+      <a
+        href="#signup"
+        aria-label="Sign up"
+        onClick={onNavigate}
+        className="absolute inset-y-0 right-0 w-[83px] rounded-r-[10px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+      />
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,16 +71,38 @@ export default function Navbar() {
       <header className="navbar-frame sticky top-0 z-50 border-b border-transparent bg-white/95 backdrop-blur">
         <nav className="mx-auto flex h-[64px] w-full max-w-[1440px] items-center justify-between px-6" aria-label="Main navigation">
           <a href="#top" className="flex items-center gap-2 font-extrabold tracking-tight text-slate-900 lg:mr-10">
-            <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-brand text-white shadow-sm">
-              <Activity size={18} strokeWidth={2.5} />
-            </span>
+            <img src="/propscale-logo.svg" alt="" width="32" height="32" className="h-8 w-8" />
             <span><span className="text-brand">PROP</span>SCALE</span>
           </a>
 
           <div className="hidden items-center gap-7 text-[14px] font-medium text-[#364153] md:flex">
-            <a href="#explore" className="inline-flex items-center gap-1 hover:text-brand">
-              Explore <ChevronDown size={15} />
-            </a>
+            <details className="group relative">
+              <summary className="inline-flex cursor-pointer list-none items-center gap-1 hover:text-brand [&::-webkit-details-marker]:hidden">
+                Explore <ChevronDown size={15} className="transition-transform group-open:rotate-180" />
+              </summary>
+              <div className="absolute left-0 top-full z-50 min-w-[240px] pt-3">
+                <nav
+                  aria-label="Explore pages"
+                  className="rounded-xl border border-slate-200 bg-white p-2 shadow-lg"
+                >
+                  <a
+                    href="/#explore"
+                    className="block rounded-lg px-3 py-2 text-[13px] text-[#364153] hover:bg-violet-50 hover:text-brand"
+                  >
+                    Explore overview
+                  </a>
+                  {explorePages.map((page) => (
+                    <a
+                      key={page.href}
+                      href={page.href}
+                      className="block rounded-lg px-3 py-2 text-[13px] text-[#364153] hover:bg-violet-50 hover:text-brand"
+                    >
+                      {page.label}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </details>
             {links.map((x, i) => (
               <a
                 key={x}
@@ -59,12 +115,7 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-card-padding lg:ml-auto">
-            <a className="hidden px-2 text-[14px] font-medium text-[#364153] hover:text-brand sm:inline" href="#login">
-              Log in
-            </a>
-            <Button href="#signup" size="md" className="h-[37px] rounded-[10px] px-4 py-2 text-[14px]">
-              Sign up
-            </Button>
+            <AuthActions className="hidden md:block" />
             <Button
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isOpen}
@@ -105,9 +156,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2 font-extrabold tracking-tight text-slate-900"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-[10px] bg-brand text-white shadow-sm">
-              <Activity size={18} strokeWidth={2.5} />
-            </span>
+            <img src="/propscale-logo.svg" alt="" width="32" height="32" className="h-8 w-8" />
             <span><span className="text-brand">PROP</span>SCALE</span>
           </a>
           <Button
@@ -122,14 +171,31 @@ export default function Navbar() {
 
         <div className="flex flex-1 flex-col justify-between overflow-y-auto p-5">
           <nav className="flex flex-col gap-1" aria-label="Mobile links">
-            <a
-              href="#explore"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center justify-between rounded-control px-3 py-2.5 text-base font-medium text-slate-700 transition hover:bg-violet-50 hover:text-brand"
-            >
-              Explore
-              <ChevronDown size={16} className="-rotate-90 text-slate-400" />
-            </a>
+            <details className="group">
+              <summary className="flex cursor-pointer list-none items-center justify-between rounded-control px-3 py-2.5 text-base font-medium text-slate-700 transition hover:bg-violet-50 hover:text-brand [&::-webkit-details-marker]:hidden">
+                Explore
+                <ChevronDown size={16} className="text-slate-400 transition-transform group-open:rotate-180" />
+              </summary>
+              <div className="mt-1 border-l border-violet-100 pl-3">
+                <a
+                  href="/#explore"
+                  onClick={() => setIsOpen(false)}
+                  className="block rounded-control px-3 py-2 text-sm text-slate-600 transition hover:bg-violet-50 hover:text-brand"
+                >
+                  Explore overview
+                </a>
+                {explorePages.map((page) => (
+                  <a
+                    key={page.href}
+                    href={page.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block rounded-control px-3 py-2 text-sm text-slate-600 transition hover:bg-violet-50 hover:text-brand"
+                  >
+                    {page.label}
+                  </a>
+                ))}
+              </div>
+            </details>
             {links.map((x, i) => (
               <a
                 key={x}
@@ -143,24 +209,10 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-6 flex flex-col gap-3 border-t border-slate-200 pt-5">
-            <Button
-              href="#login"
-              variant="outline"
-              size="md"
-              className="w-full justify-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Log in
-            </Button>
-            <Button
-              href="#signup"
-              variant="primary"
-              size="md"
-              className="w-full justify-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Sign up
-            </Button>
+            <AuthActions
+              className="mx-auto"
+              onNavigate={() => setIsOpen(false)}
+            />
           </div>
         </div>
       </div>
