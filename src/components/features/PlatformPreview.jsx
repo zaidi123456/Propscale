@@ -35,10 +35,11 @@ function CompareMock() {
   </>;
 }
 
-function DashboardMock({ variant }) {
+function DashboardMock({ variant, compact = false }) {
+  const previewHeight = compact ? { height: 215 } : undefined;
   if (variant === 0) {
     return (
-      <div className="mock-dash">
+      <div className="mock-dash" style={previewHeight}>
         <img
           src="/intelligent-dashboard.png"
           alt="Intelligent Dashboard preview"
@@ -49,7 +50,7 @@ function DashboardMock({ variant }) {
   }
   if (variant === 1) {
     return (
-      <div className="mock-dash">
+      <div className="mock-dash" style={previewHeight}>
         <img
           src="/compare-benchmark.png"
           alt="Compare & Benchmark preview"
@@ -61,7 +62,7 @@ function DashboardMock({ variant }) {
   }
   if (variant === 2) {
     return (
-      <div className="mock-dash">
+      <div className="mock-dash" style={previewHeight}>
         <img
           src="/workflows-plays.png"
           alt="Workflows & Plays preview"
@@ -71,14 +72,14 @@ function DashboardMock({ variant }) {
     );
   }
   const title = variant === 0 ? 'Cambridge Mill Road' : 'Northern Growth Play';
-  return <div className="mock-dash"><div className="mock-top"><b><img src="/propscale-logo.svg" alt="" width="14" height="14" /> PROPSCALE</b><span>Explore　 Map　 Compare　 Portfolio</span><span className="mock-avatar"/></div><div className="mock-body"><aside>Dashboard<br/><br/>Markets<br/><br/>Watchlists<br/><br/>Reports<br/><br/>Settings</aside><div className="mock-main"><div className="mock-title">{title}</div>
+  return <div className="mock-dash" style={previewHeight}><div className="mock-top"><b><img src="/propscale-logo.svg" alt="" width="14" height="14" /> PROPSCALE</b><span>Explore　 Map　 Compare　 Portfolio</span><span className="mock-avatar"/></div><div className="mock-body"><aside>Dashboard<br/><br/>Markets<br/><br/>Watchlists<br/><br/>Reports<br/><br/>Settings</aside><div className="mock-main"><div className="mock-title">{title}</div>
     {variant === 2 ? <><div className="workflow-row"><b>North Growth Play</b><span>Active</span><span>•••</span></div><div className="mock-chart wide"><div className="chart-label">Growth outlook · 12 month trend</div><svg viewBox="0 0 400 90" preserveAspectRatio="none"><path d="M0 70 C50 67,60 62,100 58 S160 54,205 42 S260 45,300 28 S355 28,400 12" fill="none" stroke="#805eff" strokeWidth="3"/></svg></div><div className="photo-strips"><i/><i/><i/><i/></div></> : <><div className="dash-location">East of England · Cambridge · Area overview</div><div className="dash-tabs">Overview　 Growth　 Drivers　 Risks　 Timing　 Planning</div><div className="section-caption">1. EXECUTIVE SUMMARY</div><div className="executive-grid"><div className="score-tile"><small>OPPORTUNITY SCORE</small><strong>87</strong><em>Top 5% nationally</em></div><div className="executive-stat"><small>Projected appreciation</small><b>5.2% – 8.1% pa</b><em>Strong outlook</em><div className="tiny-line"/></div><div className="executive-stat"><small>Rental yield strength</small><b className="green-stat">High</b><em>Gross yield 6.2%</em><div className="tiny-bars"/></div><div className="executive-stat"><small>Entry timing</small><b>Favourable</b><em>Act now</em><div className="timing-line"/></div></div><div className="section-caption verdict-caption">2. INVESTMENT VERDICT &amp; EVIDENCE</div><div className="verdict-panel"><b>Investment Verdict: Strong Buy Signal</b><p>Salford Quays presents a compelling investment case underpinned by strong growth momentum, improving liquidity and a favourable entry point relative to comparable markets.</p></div></>}
   </div></div></div>;
 }
 
-export default function PlatformPreview() {
-  return <section id="platform" className="relative isolate min-h-[576px] w-full bg-[#faf8ff] pt-7"><div className="mx-auto w-full max-w-[1240px] px-4 sm:px-[30px]">
+export default function PlatformPreview({ compact = false }) {
+  return <section id="platform" className={`relative isolate w-full bg-[#faf8ff] pt-7 ${compact ? 'min-h-[510px]' : 'min-h-[576px]'}`}><div className="mx-auto w-full max-w-[1240px] px-4 sm:px-[30px]">
     <div className="mx-auto mb-5 flex max-w-[600px] flex-col items-center gap-2 text-center"><span className="rounded-full border border-[#d8ccff] bg-white px-2 py-[3px] text-[8px] font-bold text-brand">Coming Q4 2026</span><h2 className="text-[28px] font-bold leading-[31px] text-[#17142c]">Inside the full platform</h2><p className="text-[10px] leading-[15px] text-[#737373]">Discover, evaluate and act on opportunities in one integrated workflow.<br className="hidden sm:block"/> Everything you need, in context, so you can invest with confidence.</p></div>
-    <div className="grid gap-4 lg:grid-cols-3">{cards.map(({ tag, title, copy, link, variant }) => <Card as="article" key={title} variant="preview"><DashboardMock variant={variant}/><div className="px-[14px] pb-[17px] pt-[13px]"><p className="text-[7px] font-extrabold tracking-[0.56px] text-brand">{tag}</p><h3 className="mt-0.5 text-[13px] leading-5 font-extrabold text-[#17142c]">{title}</h3><p className="mt-1 text-[8px] leading-[12px] text-slate-500">{copy}</p><a href="#signup" className="mt-2 inline-flex items-center gap-1 text-[7px] font-bold text-brand">{link} <ArrowRight size={9}/></a></div></Card>)}</div>
+    <div className="grid gap-4 lg:grid-cols-3">{cards.map(({ tag, title, copy, link, variant }) => <Card as="article" key={title} variant="preview"><DashboardMock variant={variant} compact={compact}/><div className="px-[14px] pb-[17px] pt-[13px]"><p className="text-[7px] font-extrabold tracking-[0.56px] text-brand">{tag}</p><h3 className="mt-0.5 text-[13px] leading-5 font-extrabold text-[#17142c]">{title}</h3><p className="mt-1 text-[8px] leading-[12px] text-slate-500">{copy}</p><a href="#signup" className="mt-2 inline-flex items-center gap-1 text-[7px] font-bold text-brand">{link} <ArrowRight size={9}/></a></div></Card>)}</div>
   </div></section>;
 }

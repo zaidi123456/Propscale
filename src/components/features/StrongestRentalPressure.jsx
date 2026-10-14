@@ -54,7 +54,13 @@ function FilterCheckbox({ label, checked, onChange }) {
   );
 }
 
-export default function StrongestRentalPressure() {
+export default function StrongestRentalPressure({
+  title = 'Strongest Rental Pressure',
+  audience = 'For Investors / Landlords',
+  lastUpdated = '24 May 2025',
+  markets = rentalPressureMarkets,
+  totalCount = markets.length,
+}) {
   const [query, setQuery] = useState('');
   const [region, setRegion] = useState('All Regions');
   const [city, setCity] = useState('All Cities');
@@ -66,16 +72,16 @@ export default function StrongestRentalPressure() {
   const cities = useMemo(
     () =>
       [...new Set(
-        rentalPressureMarkets
+        markets
           .filter((market) => region === 'All Regions' || market.region === region)
           .map((market) => market.city),
       )].sort(),
-    [region],
+    [markets, region],
   );
 
   const visibleMarkets = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
-    const filteredMarkets = rentalPressureMarkets.filter((market) => {
+    const filteredMarkets = markets.filter((market) => {
       const matchesQuery =
         normalizedQuery.length === 0 ||
         `${market.name} ${market.city} ${market.postcode}`
@@ -117,6 +123,7 @@ export default function StrongestRentalPressure() {
     return filteredMarkets;
   }, [
     city,
+    markets,
     minimumRental,
     propertyType,
     query,
@@ -140,10 +147,10 @@ export default function StrongestRentalPressure() {
 
             <div className="flex flex-col items-start gap-[11px]">
               <div className="inline-flex h-[25.25px] items-center rounded-full bg-[#5b4fe8] px-3 text-[11.5px] font-semibold leading-[17px] text-white">
-                For Investors / Landlords
+                {audience}
               </div>
               <h1 className="text-[34px] font-extrabold leading-[41px] tracking-[-0.95px] text-[#101828] sm:text-[38px]">
-                Strongest Rental Pressure
+                {title}
               </h1>
               <p className="max-w-[460px] text-[14.5px] leading-[23px] text-[#6a7282]">
                 Micro-markets where rental demand is outpacing supply and BTL
@@ -343,7 +350,7 @@ export default function StrongestRentalPressure() {
         </aside>
 
         <section
-          aria-label="Strongest rental pressure ranking"
+          aria-label={`${title} ranking`}
           className="overflow-x-auto pt-1"
         >
           <table className="w-full min-w-[1050px] table-fixed border-separate border-spacing-0 text-left">
@@ -474,7 +481,13 @@ export default function StrongestRentalPressure() {
         >
           <span>
             Showing {visibleMarkets.length > 0 ? '1' : '0'} to{' '}
-            {visibleMarkets.length} of {visibleMarkets.length}
+            {visibleMarkets.length === markets.length
+              ? totalCount
+              : visibleMarkets.length}{' '}
+            of{' '}
+            {visibleMarkets.length === markets.length
+              ? totalCount
+              : visibleMarkets.length}
           </span>
           <div className="flex items-center gap-1">
             <Button
@@ -564,8 +577,7 @@ export default function StrongestRentalPressure() {
       </div>
 
       <footer className="mt-3 flex min-h-[66px] items-center justify-center border-t border-[#f3f4f6] px-4 text-center text-[11.5px] text-[#99a1af]">
-        PropScale does not provide financial advice. Data last updated 24 May
-        2025.
+        PropScale does not provide financial advice. Data last updated {lastUpdated}.
       </footer>
     </main>
   );

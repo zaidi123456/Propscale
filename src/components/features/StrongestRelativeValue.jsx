@@ -33,7 +33,11 @@ function FilterCheckbox({ label, checked, onChange }) {
   );
 }
 
-export default function StrongestRelativeValue() {
+export default function StrongestRelativeValue({
+  title = 'Strongest Relative Value',
+  audience = 'For Investors / Landlords',
+  lastUpdated = '24 May 2025',
+}) {
   const [query, setQuery] = useState('');
   const [region, setRegion] = useState('All Regions');
   const [city, setCity] = useState('All Cities');
@@ -125,10 +129,10 @@ export default function StrongestRelativeValue() {
 
           <div className="max-w-[540px]">
             <span className="mb-2 inline-flex h-[25px] items-center rounded-full bg-[#5b4fe8] px-3 text-[11.5px] font-semibold leading-[17px] text-white">
-              For Investors / Landlords
+              {audience}
             </span>
             <h1 className="text-[34px] font-extrabold leading-[41px] tracking-[-0.95px] text-[#101828] sm:text-[38px]">
-              Strongest Relative Value
+              {title}
             </h1>
             <p className="mt-1 max-w-[460px] text-[14.5px] leading-[23px] text-[#6a7282]">
               Micro-markets that look attractively priced versus local
@@ -346,7 +350,7 @@ export default function StrongestRelativeValue() {
         </aside>
 
         <section
-          aria-label="Strongest relative value ranking"
+          aria-label={`${title} ranking`}
           className="overflow-x-auto pt-1"
         >
           <table className="w-full min-w-[1050px] table-fixed border-separate border-spacing-0 text-left">
@@ -567,8 +571,7 @@ export default function StrongestRelativeValue() {
       </div>
 
       <footer className="mt-3 flex min-h-[66px] items-center justify-center border-t border-[#f3f4f6] px-4 text-center text-[11.5px] text-[#99a1af]">
-        PropScale does not provide financial advice. Data last updated 24 May
-        2025.
+        PropScale does not provide financial advice. Data last updated {lastUpdated}.
       </footer>
     </main>
   );

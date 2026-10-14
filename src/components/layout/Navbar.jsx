@@ -4,13 +4,74 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import Button from '../ui/Button';
 
 const links = ['Map', 'Reports', 'How It Works', 'Pricing'];
-const explorePages = [
-  { label: 'Emerging Investment Areas', href: '/emerging-investment-areas' },
-  { label: 'Best Growth Outlook', href: '/best-growth-outlook' },
-  { label: 'Strongest Rental Pressure', href: '/strongest-rental-pressure' },
-  { label: 'Strongest Relative Value', href: '/strongest-relative-value' },
-  { label: 'Liquidity Expansion', href: '/liquidity-expansion' },
+const exploreGroups = [
+  {
+    label: 'Discover markets',
+    pages: [
+      { label: 'Explore UK Markets', href: '/explore-uk-markets' },
+      { label: 'Explore Liverpool', href: '/explore-liverpool' },
+    ],
+  },
+  {
+    label: 'Market opportunities',
+    pages: [
+      { label: 'Emerging Investment Areas', href: '/emerging-investment-areas' },
+      { label: 'Best Growth Outlook', href: '/best-growth-outlook' },
+      { label: 'Strongest Rental Pressure', href: '/strongest-rental-pressure' },
+      { label: 'Strongest Relative Value', href: '/strongest-relative-value' },
+      { label: 'Liquidity Expansion', href: '/liquidity-expansion' },
+      { label: 'Best Sourcing Areas', href: '/best-sourcing-areas' },
+      { label: 'Demand Growth Areas', href: '/demand-growth-areas' },
+      { label: 'Easier Exit Markets', href: '/easier-exit-markets' },
+      { label: 'Exit Liquidity Signals', href: '/exit-liquidity-signals' },
+      { label: 'Growth-Led Opportunities', href: '/growth-led-opportunities' },
+      { label: 'High-Potential Development Areas', href: '/high-potential-development-areas' },
+      { label: 'Investor Demand Areas', href: '/investor-demand-areas' },
+      { label: 'Rental Demand Strength', href: '/rental-demand-strength' },
+      { label: 'Pricing Headroom', href: '/pricing-headroom' },
+      { label: 'Undervalued Micro-Markets', href: '/undervalued-micromarkets' },
+    ],
+  },
+  {
+    label: 'Area intelligence',
+    pages: [{ label: 'Micro-Market Snapshot', href: '/micro-market-snapshot' }],
+  },
+  {
+    label: 'About PropScale',
+    pages: [
+      { label: 'About PropScale', href: '/about-propscale' },
+      { label: 'How It Works', href: '/how-it-works' },
+    ],
+  },
 ];
+
+const exploreOverview = { label: 'Explore overview', href: '/#explore' };
+const exploreLinkClass = 'block rounded-lg px-3 py-2 text-[13px] text-[#364153] hover:bg-violet-50 hover:text-brand';
+const mobileExploreLinkClass = 'block rounded-control px-3 py-2 text-sm text-slate-600 transition hover:bg-violet-50 hover:text-brand';
+
+function ExplorePageLinks({ mobile = false, onNavigate }) {
+  const linkClass = mobile ? mobileExploreLinkClass : exploreLinkClass;
+
+  return (
+    <>
+      <a href={exploreOverview.href} onClick={onNavigate} className={linkClass}>
+        {exploreOverview.label}
+      </a>
+      {exploreGroups.map((group) => (
+        <div key={group.label} className="pt-2">
+          <p className={`px-3 pb-1 font-semibold uppercase tracking-wide text-slate-400 ${mobile ? 'pt-2 text-[10px]' : 'pt-1 text-[9px]'}`}>
+            {group.label}
+          </p>
+          {group.pages.map((page) => (
+            <a key={page.href} href={page.href} onClick={onNavigate} className={linkClass}>
+              {page.label}
+            </a>
+          ))}
+        </div>
+      ))}
+    </>
+  );
+}
 
 function AuthActions({ onNavigate, className = '' }) {
   return (
@@ -80,26 +141,12 @@ export default function Navbar() {
               <summary className="inline-flex cursor-pointer list-none items-center gap-1 hover:text-brand [&::-webkit-details-marker]:hidden">
                 Explore <ChevronDown size={15} className="transition-transform group-open:rotate-180" />
               </summary>
-              <div className="absolute left-0 top-full z-50 min-w-[240px] pt-3">
+              <div className="absolute left-0 top-full z-50 min-w-[280px] pt-3">
                 <nav
                   aria-label="Explore pages"
-                  className="rounded-xl border border-slate-200 bg-white p-2 shadow-lg"
+                  className="max-h-[min(75vh,640px)] overflow-y-auto rounded-xl border border-slate-200 bg-white p-2 shadow-lg"
                 >
-                  <a
-                    href="/#explore"
-                    className="block rounded-lg px-3 py-2 text-[13px] text-[#364153] hover:bg-violet-50 hover:text-brand"
-                  >
-                    Explore overview
-                  </a>
-                  {explorePages.map((page) => (
-                    <a
-                      key={page.href}
-                      href={page.href}
-                      className="block rounded-lg px-3 py-2 text-[13px] text-[#364153] hover:bg-violet-50 hover:text-brand"
-                    >
-                      {page.label}
-                    </a>
-                  ))}
+                  <ExplorePageLinks />
                 </nav>
               </div>
             </details>
@@ -177,23 +224,7 @@ export default function Navbar() {
                 <ChevronDown size={16} className="text-slate-400 transition-transform group-open:rotate-180" />
               </summary>
               <div className="mt-1 border-l border-violet-100 pl-3">
-                <a
-                  href="/#explore"
-                  onClick={() => setIsOpen(false)}
-                  className="block rounded-control px-3 py-2 text-sm text-slate-600 transition hover:bg-violet-50 hover:text-brand"
-                >
-                  Explore overview
-                </a>
-                {explorePages.map((page) => (
-                  <a
-                    key={page.href}
-                    href={page.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block rounded-control px-3 py-2 text-sm text-slate-600 transition hover:bg-violet-50 hover:text-brand"
-                  >
-                    {page.label}
-                  </a>
-                ))}
+                <ExplorePageLinks mobile onNavigate={() => setIsOpen(false)} />
               </div>
             </details>
             {links.map((x, i) => (

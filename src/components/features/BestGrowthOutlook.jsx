@@ -57,7 +57,12 @@ function FilterCheckbox({ label, checked, onChange }) {
   );
 }
 
-export default function BestGrowthOutlook() {
+export default function BestGrowthOutlook({
+  title = 'Best Growth Outlook',
+  audience = 'For Investors / Landlords',
+  description = 'Areas with the strongest modelled medium-term capital growth potential.',
+  lastUpdated = '24 May 2025',
+}) {
   const [query, setQuery] = useState('');
   const [region, setRegion] = useState('All Regions');
   const [city, setCity] = useState('All Cities');
@@ -118,14 +123,13 @@ export default function BestGrowthOutlook() {
 
           <div className="max-w-[540px]">
             <span className="mb-2 inline-flex rounded-full bg-brand px-3 py-1 text-[11.5px] font-semibold text-white">
-              For Investors / Landlords
+              {audience}
             </span>
             <h1 className="text-[34px] font-extrabold leading-[41px] tracking-[-0.95px] text-[#101828] sm:text-[38px]">
-              Best Growth Outlook
+              {title}
             </h1>
             <p className="mt-1 max-w-[460px] text-[14.5px] leading-[23px] text-[#6a7282]">
-              Areas with the strongest modelled medium-term capital growth
-              potential.
+              {description}
             </p>
 
             <form
@@ -236,7 +240,7 @@ export default function BestGrowthOutlook() {
         </section>
 
         <section
-          aria-label="Best growth outlook ranking"
+          aria-label={`${title} ranking`}
           className="overflow-x-auto pt-1"
         >
           <table className="w-full min-w-[1050px] table-fixed border-separate border-spacing-0 text-left">
@@ -450,8 +454,7 @@ export default function BestGrowthOutlook() {
       </div>
 
       <footer className="mt-3 flex min-h-[66px] items-center justify-center border-t border-[#f3f4f6] px-4 text-center text-[11.5px] text-[#99a1af]">
-        PropSense does not provide financial advice. Data last updated 24 May
-        2025.
+        PropSense does not provide financial advice. Data last updated {lastUpdated}.
       </footer>
     </main>
   );
