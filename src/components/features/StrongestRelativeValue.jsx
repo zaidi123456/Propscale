@@ -118,7 +118,7 @@ export default function StrongestRelativeValue({
           aria-hidden="true"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
         />
-        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px]">
+        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px] site-container">
           <a
             href="/"
             aria-label="Back to Explore"
@@ -164,7 +164,7 @@ export default function StrongestRelativeValue({
         </div>
       </section>
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-4 px-page-gutter py-5 sm:px-8 md:px-[65px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-4 px-page-gutter py-5 sm:px-8 md:px-[65px] site-container">
         <section className="grid grid-cols-1 items-center gap-6 md:grid-cols-[minmax(0,1fr)_546px]">
           <div>
             <h2 className="text-[26px] font-extrabold leading-[41px] tracking-[-0.95px] text-[#101828] sm:text-[30px]">

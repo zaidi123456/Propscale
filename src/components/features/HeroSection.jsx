@@ -13,7 +13,7 @@ export default function HeroSection() {
   const messageIndex = useMarketRotation();
   const message = heroMessages[messageIndex];
   return <section id="top" className="overflow-hidden bg-white">
-    <div className="relative isolate mx-auto min-h-[600px] w-full max-w-[1440px] px-page-gutter pb-8 pt-10 sm:px-8 md:min-h-[536px] md:px-[65px] md:pb-0 md:pt-[56px]">
+    <div className="relative isolate mx-auto min-h-[600px] w-full max-w-[1440px] px-page-gutter pb-8 pt-10 sm:px-8 md:min-h-[536px] md:px-[65px] md:pb-0 md:pt-[56px] site-container">
       <div className="absolute right-0 top-0 -z-10 h-[340px] w-full bg-cover bg-center md:h-[437px] md:w-[61%] md:bg-right" style={{backgroundImage:"url('/back.png')"}}/>
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-white via-white/95 to-white/5 md:hidden"/><div className="absolute left-[39%] top-0 -z-10 hidden h-[437px] w-[25%] bg-gradient-to-r from-white via-white/70 to-transparent md:block"/><div className="absolute inset-x-0 top-[296px] -z-10 h-11 bg-gradient-to-t from-white to-transparent md:top-[425px] md:h-8"/>
       <div className="w-full max-w-[803px]"><div className="min-h-[304px] md:h-[317px]"><div key={messageIndex} className="hero-copy"><div className="mb-3 inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1.5 text-[12.5px] font-semibold text-brand"><Target size={14}/> {message.audience}</div>

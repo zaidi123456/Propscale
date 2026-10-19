@@ -133,7 +133,7 @@ export default function EmergingInvestmentAreas() {
           aria-hidden="true"
         />
 
-        <div className="mx-auto min-h-[340px] w-full max-w-[1440px] px-page-gutter pb-7 pt-8 sm:px-8 md:px-[65px]">
+        <div className="mx-auto min-h-[340px] w-full max-w-[1440px] px-page-gutter pb-7 pt-8 sm:px-8 md:px-[65px] site-container">
           <a
             href="/"
             aria-label="Back to Explore"
@@ -180,7 +180,7 @@ export default function EmergingInvestmentAreas() {
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px] site-container">
         <section
           aria-label="Filter and sort areas"
           className="flex flex-wrap items-center justify-between gap-3 py-3"

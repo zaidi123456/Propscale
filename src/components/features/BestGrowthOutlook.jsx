@@ -112,7 +112,7 @@ export default function BestGrowthOutlook({
           />
         </div>
 
-        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px]">
+        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px] site-container">
           <a
             href="/"
             aria-label="Back to Explore"
@@ -158,7 +158,7 @@ export default function BestGrowthOutlook({
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px] site-container">
         <section
           aria-label="Filter growth outlook areas"
           className="flex min-h-[60px] flex-wrap items-center justify-between gap-3 border-b border-slate-100 py-3"

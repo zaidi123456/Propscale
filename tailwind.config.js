@@ -19,6 +19,10 @@ module.exports = {
         'section-y': 'var(--space-section-y)',
         'card-padding': 'var(--space-card-padding)',
       },
+      maxWidth: {
+        site: 'var(--container-max-width)',
+        content: 'var(--content-max-width)',
+      },
       fontSize: {
         micro: 'var(--font-size-micro)',
         compact: 'var(--font-size-compact)',

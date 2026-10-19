@@ -142,7 +142,7 @@ export default function LiquidityExpansion({
           aria-hidden="true"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
         />
-        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px]">
+        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-8 sm:px-8 md:px-[65px] site-container">
           <a
             href="/"
             aria-label="Back to Explore"
@@ -188,7 +188,7 @@ export default function LiquidityExpansion({
         </div>
       </section>
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 px-page-gutter py-3 sm:px-8 md:px-[65px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-2 px-page-gutter py-3 sm:px-8 md:px-[65px] site-container">
         <section
           aria-label="Filter and sort liquidity areas"
           className="flex min-h-[34px] flex-wrap items-center justify-between gap-3 py-1"

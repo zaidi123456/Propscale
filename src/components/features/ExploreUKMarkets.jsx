@@ -58,7 +58,7 @@ export default function ExploreUKMarkets() {
 
   return (
     <main className="min-h-[calc(100vh-64px)] bg-[#fdfcff] pb-10">
-      <section className="mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-6 px-5 pb-8 pt-10 sm:px-8 md:grid-cols-[minmax(0,1fr)_320px] md:gap-12 md:px-[5%] md:pb-[92px] md:pt-[62px]">
+      <section className="mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-6 px-5 pb-8 pt-10 sm:px-8 md:grid-cols-[minmax(0,1fr)_320px] md:gap-12 md:px-[5%] md:pb-[92px] md:pt-[62px] site-container">
         <div>
           <h1 className="text-[36px] font-extrabold leading-[1.08] tracking-[-1.3px] text-[#272438] sm:text-[44px]">Explore UK Markets</h1>
           <p className="mt-3 max-w-[470px] text-[14px] leading-[21px] text-[#777385]">Explore property markets across England and discover<br className="hidden sm:block" /> the micro-markets shaping performance in each area.</p>
@@ -80,12 +80,12 @@ export default function ExploreUKMarkets() {
         </div>
       </section>
 
-      <section aria-label="UK market regions" className="mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-4 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-3 xl:grid-cols-4 md:px-[5%]">
+      <section aria-label="UK market regions" className="mx-auto grid w-full max-w-[1536px] grid-cols-1 gap-4 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-3 xl:grid-cols-4 md:px-[5%] site-container">
         {visibleMarkets.map((market) => <MarketCard key={market.name} market={market} />)}
         {visibleMarkets.length === 0 && <p className="col-span-full py-12 text-center text-sm text-slate-500">No markets match your search.</p>}
       </section>
 
-      <section className="mx-auto mt-8 flex w-full max-w-[1536px] flex-col gap-4 px-5 sm:px-8 md:px-[5%]">
+      <section className="mx-auto mt-8 flex w-full max-w-[1536px] flex-col gap-4 px-5 sm:px-8 md:px-[5%] site-container">
         <div id="signup" className="flex flex-col gap-4 rounded-[10px] border border-[#e5dcff] bg-[#f5f0ff] px-6 py-5 md:flex-row md:items-center md:justify-between md:px-7">
           <div className="flex items-center gap-4">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[10px] bg-[#e9ddff] text-[#673cf4]"><Users size={24} /></span>

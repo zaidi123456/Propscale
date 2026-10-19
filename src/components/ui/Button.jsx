@@ -21,12 +21,12 @@ export default function Button({
   variant = 'primary',
   size = 'md',
   className = '',
+  style,
   children,
   ...props
 }) {
   const Component = href ? 'a' : 'button';
-  const shape = variant === 'chip' ? 'rounded-full' : 'rounded-[10px]';
-  const classes = `inline-flex shrink-0 items-center justify-center gap-1.5 ${shape} font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`;
+  const classes = `inline-flex shrink-0 items-center justify-center gap-1.5 font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${variants[variant] ?? variants.primary} ${sizes[size] ?? sizes.md} ${className}`;
 
-  return <Component href={href} type={href ? undefined : type} className={classes} {...props}>{children}</Component>;
+  return <Component href={href} type={href ? undefined : type} className={classes} style={{ borderRadius: variant === 'chip' ? '9999px' : 'var(--radius-control)', ...style }} {...props}>{children}</Component>;
 }

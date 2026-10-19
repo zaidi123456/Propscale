@@ -135,7 +135,7 @@ export default function StrongestRentalPressure({
   return (
     <main>
       <section className="relative isolate min-h-[298px] overflow-hidden border-b border-slate-100 bg-white">
-        <div className="mx-auto grid min-h-[298px] w-full max-w-[1440px] grid-cols-1 items-center gap-6 px-page-gutter py-6 sm:px-8 md:grid-cols-[minmax(0,1fr)_546px] md:gap-8 md:px-[65px] md:py-0">
+        <div className="mx-auto grid min-h-[298px] w-full max-w-[1440px] grid-cols-1 items-center gap-6 px-page-gutter py-6 sm:px-8 md:grid-cols-[minmax(0,1fr)_546px] md:gap-8 md:px-[65px] md:py-0 site-container">
           <div className="flex max-w-[540px] flex-col items-start">
             <a
               href="/"
@@ -205,7 +205,7 @@ export default function StrongestRentalPressure({
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px] site-container">
         <section
           aria-label="Filter and sort rental areas"
           className="flex min-h-[60px] flex-wrap items-center justify-between gap-3 border-b border-slate-100 py-3"

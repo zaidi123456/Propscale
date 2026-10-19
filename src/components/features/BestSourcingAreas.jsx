@@ -51,7 +51,7 @@ export default function BestSourcingAreas({
     <main>
       <section className="relative isolate h-[266px] overflow-hidden border-b border-slate-100 bg-white sm:h-[298px]">
         <img src="/emerging-areas-hero.png" alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover object-center" />
-        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-6 sm:px-8 sm:pt-8 md:px-[65px]">
+        <div className="mx-auto w-full max-w-[1440px] px-page-gutter pt-6 sm:px-8 sm:pt-8 md:px-[65px] site-container">
           <a href="/#explore" aria-label="Back to Explore" className="mb-4 inline-flex h-5 w-[115px] transition-opacity hover:opacity-80 sm:mb-5">
             <img src="/back-to-explore.svg" alt="" aria-hidden="true" width="115" height="20" />
           </a>
@@ -67,7 +67,7 @@ export default function BestSourcingAreas({
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-page-gutter sm:px-8 md:px-[65px] site-container">
         <section aria-label="Filter sourcing areas" className="flex min-h-[60px] flex-wrap items-center justify-between gap-3 border-b border-slate-100 py-3">
           <div className="flex flex-wrap items-center gap-3">
             <label className="relative"><span className="sr-only">Filter by region</span><span aria-hidden="true" className="pointer-events-none absolute left-[13px] top-1/2 -translate-y-1/2 text-[11px]">📍</span>

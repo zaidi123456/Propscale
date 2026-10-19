@@ -78,7 +78,7 @@ function DashboardMock({ variant, compact = false }) {
 }
 
 export default function PlatformPreview({ compact = false }) {
-  return <section id="platform" className={`relative isolate w-full bg-[#faf8ff] pt-7 ${compact ? 'min-h-[510px]' : 'min-h-[576px]'}`}><div className="mx-auto w-full max-w-[1240px] px-4 sm:px-[30px]">
+  return <section id="platform" className={`relative isolate w-full bg-[#faf8ff] pt-7 ${compact ? 'min-h-[510px]' : 'min-h-[576px]'}`}><div className="mx-auto w-full max-w-[1240px] px-4 sm:px-[30px] site-container">
     <div className="mx-auto mb-5 flex max-w-[600px] flex-col items-center gap-2 text-center"><span className="rounded-full border border-[#d8ccff] bg-white px-2 py-[3px] text-[8px] font-bold text-brand">Coming Q4 2026</span><h2 className="text-[28px] font-bold leading-[31px] text-[#17142c]">Inside the full platform</h2><p className="text-[10px] leading-[15px] text-[#737373]">Discover, evaluate and act on opportunities in one integrated workflow.<br className="hidden sm:block"/> Everything you need, in context, so you can invest with confidence.</p></div>
     <div className="grid gap-4 lg:grid-cols-3">{cards.map(({ tag, title, copy, link, variant }) => <Card as="article" key={title} variant="preview"><DashboardMock variant={variant} compact={compact}/><div className="px-[14px] pb-[17px] pt-[13px]"><p className="text-[7px] font-extrabold tracking-[0.56px] text-brand">{tag}</p><h3 className="mt-0.5 text-[13px] leading-5 font-extrabold text-[#17142c]">{title}</h3><p className="mt-1 text-[8px] leading-[12px] text-slate-500">{copy}</p><a href="#signup" className="mt-2 inline-flex items-center gap-1 text-[7px] font-bold text-brand">{link} <ArrowRight size={9}/></a></div></Card>)}</div>
   </div></section>;

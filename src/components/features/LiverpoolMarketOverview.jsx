@@ -115,7 +115,7 @@ export default function LiverpoolMarketOverview() {
       <section className="relative isolate h-[282px] overflow-hidden border-b border-[#eeeaf5] bg-white">
         <img src="/relative-value-hero.png" alt="Liverpool terraced houses" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#fff_0%,#fff_34%,rgba(255,255,255,0.94)_46%,rgba(255,255,255,0.55)_61%,rgba(255,255,255,0.02)_82%)]" />
-        <div className="mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 md:px-[65px]">
+        <div className="mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 md:px-[65px] site-container">
           <form role="search" className="flex h-[34px] w-full max-w-[220px] items-center gap-2 rounded-[8px] border border-[#e5e7eb] bg-white/90 px-3" onSubmit={(event) => event.preventDefault()}>
             <Search size={14} className="shrink-0 text-[#99a1af]" />
             <Input variant="search" aria-label="Search market" value={query} onChange={(event) => setQuery(event.target.value)} className="h-full text-[12px] text-[#364153]" />
@@ -129,7 +129,7 @@ export default function LiverpoolMarketOverview() {
         </div>
       </section>
 
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-[65px] site-container">
         <nav aria-label="Liverpool areas" className="mt-[19px] flex flex-wrap gap-2 border-b border-[#eeeaf5] pb-[14px] pt-3">
           {areaTabs.map((area) => {
             const active = activeArea === area.name;

@@ -36,7 +36,7 @@ export default function CategoryCards() {
     return () => window.clearInterval(timer);
   }, []);
 
-  return <section id="explore" className="mx-auto w-full max-w-[1440px] px-page-gutter pb-0 pt-[60px] sm:px-8 xl:px-[63px]">
+  return <section id="explore" className="mx-auto w-full max-w-[1440px] px-page-gutter pb-0 pt-[60px] sm:px-8 xl:px-[63px] site-container">
     <h2 className="mb-5 text-[19px] font-bold leading-7 text-[#171717]">Explore by what matters most</h2>
     <div key={setIndex} className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
       {categorySets[setIndex].map(({title,copy,icon:Icon,shade})=><Card as="a" href="#micro-markets" key={title} variant="category" className={`category-card ${shade}`}>

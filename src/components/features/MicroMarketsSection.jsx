@@ -50,7 +50,7 @@ export default function MicroMarketsSection(){
   ][messageIndex];
 
   return (
-    <section id="micro-markets" className="mx-auto w-full max-w-[1440px] px-page-gutter pb-0 pt-section-y sm:px-8 xl:px-[63px]">
+    <section id="micro-markets" className="mx-auto w-full max-w-[1440px] px-page-gutter pb-0 pt-section-y sm:px-8 xl:px-[63px] site-container">
       <div className="mb-5 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-[19px] font-bold leading-7 text-[#171717]">{heading}</h2>
         <a href="#markets" className="inline-flex items-center gap-1 text-[13px] font-semibold text-brand transition-colors hover:text-violet-800">

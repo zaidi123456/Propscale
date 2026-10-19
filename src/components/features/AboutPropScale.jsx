@@ -60,14 +60,14 @@ function HeroVisual() {
 }
 
 function Section({ id, className = '', children }) {
-  return <section id={id} className={className}><div className="mx-auto w-full max-w-[1320px] px-5 py-10 sm:px-9 lg:py-[50px]">{children}</div></section>;
+  return <section id={id} className={className}><div className="mx-auto w-full max-w-[1320px] px-5 py-10 sm:px-9 lg:py-[50px] site-container">{children}</div></section>;
 }
 
 export default function AboutPropScale() {
   return (
     <main className="bg-[#fdfcff] text-[#17142c]">
       <section className="min-h-[482px] border-b border-[#eee9fa]">
-        <div className="mx-auto grid min-h-[482px] w-full max-w-[1320px] items-center gap-3 px-5 py-10 sm:px-9 lg:grid-cols-[1fr_1.08fr] lg:py-0">
+        <div className="mx-auto grid min-h-[482px] w-full max-w-[1320px] items-center gap-3 px-5 py-10 sm:px-9 lg:grid-cols-[1fr_1.08fr] lg:py-0 site-container">
           <div className="hero-copy relative z-30 max-w-[545px]">
             <Eyebrow>About PropScale</Eyebrow>
             <h1 className="mt-4 max-w-[540px] text-[32px] font-extrabold leading-[1.18] tracking-[-1.5px] text-[#17142c] sm:text-[36px]">Area intelligence built for residential property investment.</h1>
@@ -117,7 +117,7 @@ export default function AboutPropScale() {
       </Section>
 
       <section className="px-5 py-5 sm:px-9 sm:py-7">
-        <div className="relative mx-auto w-full max-w-[1320px] overflow-hidden rounded-lg">
+        <div className="relative site-content overflow-hidden rounded-lg">
           <img src="/about-closing-cta.svg" alt="See local markets more clearly. Explore the research preview or join early access." className="block h-auto w-full" width="1320" height="121" />
           <a href="/explore-uk-markets" aria-label="Explore the research preview" className="absolute left-[67.1%] top-[31%] h-[37%] w-[16.8%] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4d20e8]" />
           <a href="#signup" aria-label="Join early access" className="absolute left-[84.8%] top-[31%] h-[37%] w-[10.3%] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#4d20e8]" />

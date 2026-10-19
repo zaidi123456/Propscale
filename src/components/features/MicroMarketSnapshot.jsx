@@ -86,7 +86,7 @@ export default function MicroMarketSnapshot() {
 
   return (
     <main className="min-h-screen bg-white pb-8">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-[65px]">
+      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-[65px] site-container">
         <section className="grid grid-cols-1 gap-7 pb-7 pt-8 md:grid-cols-[minmax(0,1fr)_minmax(400px,498px)] md:items-start md:gap-6 md:pb-[46px] md:pt-9">
           <div>
             <form role="search" className="mb-5 flex h-[37px] w-full max-w-[245px] items-center gap-2 rounded-[9px] border border-[#e2e5ec] px-3" onSubmit={(event) => event.preventDefault()}>

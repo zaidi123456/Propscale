@@ -11,7 +11,7 @@ function UkDots() {
 
 export default function FeatureBanners() {
   return <>
-    <section id="how-it-works" className="mx-auto grid w-full max-w-[1314px] grid-cols-1 gap-5 px-page-gutter pb-0 pt-section-y sm:px-8 lg:grid-cols-[minmax(0,731.39fr)_minmax(0,562.61fr)] lg:px-0 lg:pb-0 lg:pt-[35px]">
+    <section id="how-it-works" className="mx-auto grid w-full max-w-[1314px] grid-cols-1 gap-5 px-page-gutter pb-0 pt-section-y sm:px-8 lg:grid-cols-[minmax(0,731.39fr)_minmax(0,562.61fr)] lg:px-0 lg:pb-0 lg:pt-[35px] site-container">
       <Card as="article" variant="feature" className="flex min-h-[302px] w-full flex-col justify-center gap-4 overflow-hidden px-7 py-7 lg:h-[301.75px] lg:flex-row lg:items-center lg:justify-start lg:gap-8 lg:py-7 lg:pr-0">
         <div className="relative z-10 flex min-w-0 flex-col gap-3 lg:w-[381.39px] lg:flex-none">
           <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-brand text-white"><BarChart3 size={18}/></span>

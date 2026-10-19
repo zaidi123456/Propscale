@@ -16,9 +16,12 @@
   --color-positive: #31a66c;
   --color-caution: #b7791f;
 
-  --space-page-gutter: 1.25rem;
+  /* Page 1's 1440px frame leaves a 1314px content area at desktop widths. */
+  --space-page-gutter: clamp(2rem, calc((100vw - 82.125rem) / 2), 3.9375rem);
+  --container-max-width: 90rem;
+  --content-max-width: 82.125rem;
   --space-section-y: 1.75rem;
-  --space-card-padding: 0.75rem;
+  --space-card-padding: 1rem;
 
   --font-size-micro: 0.25rem;
   --font-size-compact: 0.6875rem;
@@ -46,6 +49,9 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--color-surface); color: var(--color-text); font-family: inherit; -webkit-font-smoothing: antialiased; }
 button, input { font: inherit; }
 ::selection { background: #e8e1ff; color: #5033d8; }
+.site-container { width: 100%; max-width: var(--container-max-width); margin-inline: auto; padding-inline: var(--space-page-gutter); }
+.site-content { width: 100%; max-width: var(--content-max-width); margin-inline: auto; }
+@media (max-width: 639px) { :root { --space-page-gutter: 1.25rem; } }
 .blocks-figure { position:absolute; right:0; bottom:0; width:38%; height:auto; pointer-events:none; }
 .london-map { position:absolute; right:14px; top:50%; width:164px; height:245px; transform:translateY(-50%); object-fit:contain; }
 .hero-copy > div { animation:hero-copy-in .55s ease-out both; }
